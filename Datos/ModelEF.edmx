@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Trabajo_FinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEmpresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DireccionEmpresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CiudadEmpresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Especialista">
+          <Key>
+            <PropertyRef Name="EspecialistaId" />
+          </Key>
+          <Property Name="EspecialistaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DniEspecialista" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreEspecialista" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApellidoEspecialista" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EspecialistaTrabajador">
+          <Key>
+            <PropertyRef Name="EspecialistaTrabajadorId" />
+          </Key>
+          <Property Name="EspecialistaTrabajadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaTrabajo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="Trabajador_TrabajadorId" Type="int" Nullable="false" />
+          <Property Name="Especialista_EspecialistaId" Type="int" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroConsumoMetabolico">
+          <Key>
+            <PropertyRef Name="RegistroConsumoMetabolicoId" />
+          </Key>
+          <Property Name="RegistroConsumoMetabolicoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PosicionTrabajador" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TiempoPosicion" Type="int" Nullable="false" />
+          <Property Name="TipoTrabajo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TiempoTrabajo" Type="int" Nullable="false" />
+          <Property Name="NivelHemoglobina" Type="real" Nullable="false" />
+          <Property Name="RangoHemoglobina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LaboratorioClinico" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroMonitoreoErgonomico">
+          <Key>
+            <PropertyRef Name="RegistroMonitoreoErgonomicoId" />
+          </Key>
+          <Property Name="RegistroMonitoreoErgonomicoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErgonomiaDatos" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TiempoDato" Type="int" Nullable="false" />
+          <Property Name="EquipamientoOficina" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TiempoEquipamiento" Type="int" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroResistenciaTermica">
+          <Key>
+            <PropertyRef Name="RegistroResistenciaTermicaId" />
+          </Key>
+          <Property Name="RegistroResistenciaTermicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrendaRopaInterior" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrendaCamisa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrendaPantalones" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrendaVestidos" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PrendaChaqueta" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroTrabajador">
+          <Key>
+            <PropertyRef Name="RegistroTrabajadorId" />
+          </Key>
+          <Property Name="RegistroTrabajadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" Type="int" Nullable="false" />
+          <Property Name="RegistroResistenciaTermica_RegistroResistenciaTermicaId" Type="int" Nullable="false" />
+          <Property Name="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" Type="int" Nullable="false" />
+          <Property Name="Trabajador_TrabajadorId" Type="int" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="TrabajadorId" />
+          </Key>
+          <Property Name="TrabajadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DniTrabajador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreTrabajador" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApellidoTrabajador" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="Empresa_EmpresaId" Type="int" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="EspecialistaTrabajador_Especialista">
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="1" />
+          <End Role="EspecialistaTrabajador" Type="Self.EspecialistaTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialista">
+              <PropertyRef Name="EspecialistaId" />
+            </Principal>
+            <Dependent Role="EspecialistaTrabajador">
+              <PropertyRef Name="Especialista_EspecialistaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecialistaTrabajador_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="EspecialistaTrabajador" Type="Self.EspecialistaTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="TrabajadorId" />
+            </Principal>
+            <Dependent Role="EspecialistaTrabajador">
+              <PropertyRef Name="Trabajador_TrabajadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroConsumoMetabolico">
+          <End Role="RegistroConsumoMetabolico" Type="Self.RegistroConsumoMetabolico" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroConsumoMetabolico">
+              <PropertyRef Name="RegistroConsumoMetabolicoId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroMonitoreoErgonomico">
+          <End Role="RegistroMonitoreoErgonomico" Type="Self.RegistroMonitoreoErgonomico" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroMonitoreoErgonomico">
+              <PropertyRef Name="RegistroMonitoreoErgonomicoId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroResistenciaTermica">
+          <End Role="RegistroResistenciaTermica" Type="Self.RegistroResistenciaTermica" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroResistenciaTermica">
+              <PropertyRef Name="RegistroResistenciaTermicaId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroResistenciaTermica_RegistroResistenciaTermicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="TrabajadorId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="Trabajador_TrabajadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Trabajador_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Trabajador">
+              <PropertyRef Name="Empresa_EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Trabajo_FinalModelStoreContainer">
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialista" EntityType="Self.Especialista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EspecialistaTrabajador" EntityType="Self.EspecialistaTrabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroConsumoMetabolico" EntityType="Self.RegistroConsumoMetabolico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroMonitoreoErgonomico" EntityType="Self.RegistroMonitoreoErgonomico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroResistenciaTermica" EntityType="Self.RegistroResistenciaTermica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroTrabajador" EntityType="Self.RegistroTrabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="EspecialistaTrabajador_Especialista" Association="Self.EspecialistaTrabajador_Especialista">
+            <End Role="Especialista" EntitySet="Especialista" />
+            <End Role="EspecialistaTrabajador" EntitySet="EspecialistaTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="EspecialistaTrabajador_Trabajador" Association="Self.EspecialistaTrabajador_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="EspecialistaTrabajador" EntitySet="EspecialistaTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroConsumoMetabolico" Association="Self.RegistroOcupacional_RegistroConsumoMetabolico">
+            <End Role="RegistroConsumoMetabolico" EntitySet="RegistroConsumoMetabolico" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroMonitoreoErgonomico" Association="Self.RegistroOcupacional_RegistroMonitoreoErgonomico">
+            <End Role="RegistroMonitoreoErgonomico" EntitySet="RegistroMonitoreoErgonomico" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroResistenciaTermica" Association="Self.RegistroOcupacional_RegistroResistenciaTermica">
+            <End Role="RegistroResistenciaTermica" EntitySet="RegistroResistenciaTermica" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_Trabajador" Association="Self.RegistroOcupacional_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="Trabajador_Empresa" Association="Self.Trabajador_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Trabajador" EntitySet="Trabajador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Trabajo_FinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DireccionEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CiudadEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Trabajador" Relationship="Self.Trabajador_Empresa" FromRole="Empresa" ToRole="Trabajador" />
+        </EntityType>
+        <EntityType Name="Especialista">
+          <Key>
+            <PropertyRef Name="EspecialistaId" />
+          </Key>
+          <Property Name="EspecialistaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DniEspecialista" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreEspecialista" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoEspecialista" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EspecialistaTrabajador" Relationship="Self.EspecialistaTrabajador_Especialista" FromRole="Especialista" ToRole="EspecialistaTrabajador" />
+        </EntityType>
+        <EntityType Name="EspecialistaTrabajador">
+          <Key>
+            <PropertyRef Name="EspecialistaTrabajadorId" />
+          </Key>
+          <Property Name="EspecialistaTrabajadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaTrabajo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="Trabajador_TrabajadorId" Type="Int32" Nullable="false" />
+          <Property Name="Especialista_EspecialistaId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Especialista" Relationship="Self.EspecialistaTrabajador_Especialista" FromRole="EspecialistaTrabajador" ToRole="Especialista" />
+          <NavigationProperty Name="Trabajador" Relationship="Self.EspecialistaTrabajador_Trabajador" FromRole="EspecialistaTrabajador" ToRole="Trabajador" />
+        </EntityType>
+        <EntityType Name="RegistroConsumoMetabolico">
+          <Key>
+            <PropertyRef Name="RegistroConsumoMetabolicoId" />
+          </Key>
+          <Property Name="RegistroConsumoMetabolicoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PosicionTrabajador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TiempoPosicion" Type="Int32" Nullable="false" />
+          <Property Name="TipoTrabajo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TiempoTrabajo" Type="Int32" Nullable="false" />
+          <Property Name="NivelHemoglobina" Type="Single" Nullable="false" />
+          <Property Name="RangoHemoglobina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LaboratorioClinico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegistroTrabajador" Relationship="Self.RegistroOcupacional_RegistroConsumoMetabolico" FromRole="RegistroConsumoMetabolico" ToRole="RegistroTrabajador" />
+        </EntityType>
+        <EntityType Name="RegistroMonitoreoErgonomico">
+          <Key>
+            <PropertyRef Name="RegistroMonitoreoErgonomicoId" />
+          </Key>
+          <Property Name="RegistroMonitoreoErgonomicoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErgonomiaDatos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TiempoDato" Type="Int32" Nullable="false" />
+          <Property Name="EquipamientoOficina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TiempoEquipamiento" Type="Int32" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegistroTrabajador" Relationship="Self.RegistroOcupacional_RegistroMonitoreoErgonomico" FromRole="RegistroMonitoreoErgonomico" ToRole="RegistroTrabajador" />
+        </EntityType>
+        <EntityType Name="RegistroResistenciaTermica">
+          <Key>
+            <PropertyRef Name="RegistroResistenciaTermicaId" />
+          </Key>
+          <Property Name="RegistroResistenciaTermicaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrendaRopaInterior" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrendaCamisa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrendaPantalones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrendaVestidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrendaChaqueta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegistroTrabajador" Relationship="Self.RegistroOcupacional_RegistroResistenciaTermica" FromRole="RegistroResistenciaTermica" ToRole="RegistroTrabajador" />
+        </EntityType>
+        <EntityType Name="RegistroTrabajador">
+          <Key>
+            <PropertyRef Name="RegistroTrabajadorId" />
+          </Key>
+          <Property Name="RegistroTrabajadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" Type="Int32" Nullable="false" />
+          <Property Name="RegistroResistenciaTermica_RegistroResistenciaTermicaId" Type="Int32" Nullable="false" />
+          <Property Name="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" Type="Int32" Nullable="false" />
+          <Property Name="Trabajador_TrabajadorId" Type="Int32" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegistroConsumoMetabolico" Relationship="Self.RegistroOcupacional_RegistroConsumoMetabolico" FromRole="RegistroTrabajador" ToRole="RegistroConsumoMetabolico" />
+          <NavigationProperty Name="RegistroMonitoreoErgonomico" Relationship="Self.RegistroOcupacional_RegistroMonitoreoErgonomico" FromRole="RegistroTrabajador" ToRole="RegistroMonitoreoErgonomico" />
+          <NavigationProperty Name="RegistroResistenciaTermica" Relationship="Self.RegistroOcupacional_RegistroResistenciaTermica" FromRole="RegistroTrabajador" ToRole="RegistroResistenciaTermica" />
+          <NavigationProperty Name="Trabajador" Relationship="Self.RegistroOcupacional_Trabajador" FromRole="RegistroTrabajador" ToRole="Trabajador" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="TrabajadorId" />
+          </Key>
+          <Property Name="TrabajadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DniTrabajador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreTrabajador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoTrabajador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="Empresa_EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Empresa" Relationship="Self.Trabajador_Empresa" FromRole="Trabajador" ToRole="Empresa" />
+          <NavigationProperty Name="EspecialistaTrabajador" Relationship="Self.EspecialistaTrabajador_Trabajador" FromRole="Trabajador" ToRole="EspecialistaTrabajador" />
+          <NavigationProperty Name="RegistroTrabajador" Relationship="Self.RegistroOcupacional_Trabajador" FromRole="Trabajador" ToRole="RegistroTrabajador" />
+        </EntityType>
+        <Association Name="Trabajador_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="Trabajador">
+              <PropertyRef Name="Empresa_EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecialistaTrabajador_Especialista">
+          <End Role="Especialista" Type="Self.Especialista" Multiplicity="1" />
+          <End Role="EspecialistaTrabajador" Type="Self.EspecialistaTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialista">
+              <PropertyRef Name="EspecialistaId" />
+            </Principal>
+            <Dependent Role="EspecialistaTrabajador">
+              <PropertyRef Name="Especialista_EspecialistaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecialistaTrabajador_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="EspecialistaTrabajador" Type="Self.EspecialistaTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="TrabajadorId" />
+            </Principal>
+            <Dependent Role="EspecialistaTrabajador">
+              <PropertyRef Name="Trabajador_TrabajadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroConsumoMetabolico">
+          <End Role="RegistroConsumoMetabolico" Type="Self.RegistroConsumoMetabolico" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroConsumoMetabolico">
+              <PropertyRef Name="RegistroConsumoMetabolicoId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroMonitoreoErgonomico">
+          <End Role="RegistroMonitoreoErgonomico" Type="Self.RegistroMonitoreoErgonomico" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroMonitoreoErgonomico">
+              <PropertyRef Name="RegistroMonitoreoErgonomicoId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_RegistroResistenciaTermica">
+          <End Role="RegistroResistenciaTermica" Type="Self.RegistroResistenciaTermica" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistroResistenciaTermica">
+              <PropertyRef Name="RegistroResistenciaTermicaId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="RegistroResistenciaTermica_RegistroResistenciaTermicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroOcupacional_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="RegistroTrabajador" Type="Self.RegistroTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="TrabajadorId" />
+            </Principal>
+            <Dependent Role="RegistroTrabajador">
+              <PropertyRef Name="Trabajador_TrabajadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Trabajo_Final" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Especialista" EntityType="Self.Especialista" />
+          <EntitySet Name="EspecialistaTrabajador" EntityType="Self.EspecialistaTrabajador" />
+          <EntitySet Name="RegistroConsumoMetabolico" EntityType="Self.RegistroConsumoMetabolico" />
+          <EntitySet Name="RegistroMonitoreoErgonomico" EntityType="Self.RegistroMonitoreoErgonomico" />
+          <EntitySet Name="RegistroResistenciaTermica" EntityType="Self.RegistroResistenciaTermica" />
+          <EntitySet Name="RegistroTrabajador" EntityType="Self.RegistroTrabajador" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" />
+          <AssociationSet Name="Trabajador_Empresa" Association="Self.Trabajador_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Trabajador" EntitySet="Trabajador" />
+          </AssociationSet>
+          <AssociationSet Name="EspecialistaTrabajador_Especialista" Association="Self.EspecialistaTrabajador_Especialista">
+            <End Role="Especialista" EntitySet="Especialista" />
+            <End Role="EspecialistaTrabajador" EntitySet="EspecialistaTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="EspecialistaTrabajador_Trabajador" Association="Self.EspecialistaTrabajador_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="EspecialistaTrabajador" EntitySet="EspecialistaTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroConsumoMetabolico" Association="Self.RegistroOcupacional_RegistroConsumoMetabolico">
+            <End Role="RegistroConsumoMetabolico" EntitySet="RegistroConsumoMetabolico" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroMonitoreoErgonomico" Association="Self.RegistroOcupacional_RegistroMonitoreoErgonomico">
+            <End Role="RegistroMonitoreoErgonomico" EntitySet="RegistroMonitoreoErgonomico" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_RegistroResistenciaTermica" Association="Self.RegistroOcupacional_RegistroResistenciaTermica">
+            <End Role="RegistroResistenciaTermica" EntitySet="RegistroResistenciaTermica" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroOcupacional_Trabajador" Association="Self.RegistroOcupacional_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="RegistroTrabajador" EntitySet="RegistroTrabajador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Trabajo_FinalModelStoreContainer" CdmEntityContainer="Trabajo_Final">
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+                <ScalarProperty Name="DireccionEmpresa" ColumnName="DireccionEmpresa" />
+                <ScalarProperty Name="CiudadEmpresa" ColumnName="CiudadEmpresa" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialista">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.Especialista">
+              <MappingFragment StoreEntitySet="Especialista">
+                <ScalarProperty Name="EspecialistaId" ColumnName="EspecialistaId" />
+                <ScalarProperty Name="DniEspecialista" ColumnName="DniEspecialista" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="NombreEspecialista" ColumnName="NombreEspecialista" />
+                <ScalarProperty Name="ApellidoEspecialista" ColumnName="ApellidoEspecialista" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EspecialistaTrabajador">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.EspecialistaTrabajador">
+              <MappingFragment StoreEntitySet="EspecialistaTrabajador">
+                <ScalarProperty Name="EspecialistaTrabajadorId" ColumnName="EspecialistaTrabajadorId" />
+                <ScalarProperty Name="AreaTrabajo" ColumnName="AreaTrabajo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="Trabajador_TrabajadorId" ColumnName="Trabajador_TrabajadorId" />
+                <ScalarProperty Name="Especialista_EspecialistaId" ColumnName="Especialista_EspecialistaId" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroConsumoMetabolico">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.RegistroConsumoMetabolico">
+              <MappingFragment StoreEntitySet="RegistroConsumoMetabolico">
+                <ScalarProperty Name="RegistroConsumoMetabolicoId" ColumnName="RegistroConsumoMetabolicoId" />
+                <ScalarProperty Name="PosicionTrabajador" ColumnName="PosicionTrabajador" />
+                <ScalarProperty Name="TiempoPosicion" ColumnName="TiempoPosicion" />
+                <ScalarProperty Name="TipoTrabajo" ColumnName="TipoTrabajo" />
+                <ScalarProperty Name="TiempoTrabajo" ColumnName="TiempoTrabajo" />
+                <ScalarProperty Name="NivelHemoglobina" ColumnName="NivelHemoglobina" />
+                <ScalarProperty Name="RangoHemoglobina" ColumnName="RangoHemoglobina" />
+                <ScalarProperty Name="LaboratorioClinico" ColumnName="LaboratorioClinico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroMonitoreoErgonomico">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.RegistroMonitoreoErgonomico">
+              <MappingFragment StoreEntitySet="RegistroMonitoreoErgonomico">
+                <ScalarProperty Name="RegistroMonitoreoErgonomicoId" ColumnName="RegistroMonitoreoErgonomicoId" />
+                <ScalarProperty Name="ErgonomiaDatos" ColumnName="ErgonomiaDatos" />
+                <ScalarProperty Name="TiempoDato" ColumnName="TiempoDato" />
+                <ScalarProperty Name="EquipamientoOficina" ColumnName="EquipamientoOficina" />
+                <ScalarProperty Name="TiempoEquipamiento" ColumnName="TiempoEquipamiento" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroResistenciaTermica">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.RegistroResistenciaTermica">
+              <MappingFragment StoreEntitySet="RegistroResistenciaTermica">
+                <ScalarProperty Name="RegistroResistenciaTermicaId" ColumnName="RegistroResistenciaTermicaId" />
+                <ScalarProperty Name="PrendaRopaInterior" ColumnName="PrendaRopaInterior" />
+                <ScalarProperty Name="PrendaCamisa" ColumnName="PrendaCamisa" />
+                <ScalarProperty Name="PrendaPantalones" ColumnName="PrendaPantalones" />
+                <ScalarProperty Name="PrendaVestidos" ColumnName="PrendaVestidos" />
+                <ScalarProperty Name="PrendaChaqueta" ColumnName="PrendaChaqueta" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroTrabajador">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.RegistroTrabajador">
+              <MappingFragment StoreEntitySet="RegistroTrabajador">
+                <ScalarProperty Name="RegistroTrabajadorId" ColumnName="RegistroTrabajadorId" />
+                <ScalarProperty Name="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" ColumnName="RegistroConsumoMetabolico_RegistroConsumoMetabolicoId" />
+                <ScalarProperty Name="RegistroResistenciaTermica_RegistroResistenciaTermicaId" ColumnName="RegistroResistenciaTermica_RegistroResistenciaTermicaId" />
+                <ScalarProperty Name="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" ColumnName="RegistroMonitoreoErgonomico_RegistroMonitoreoErgonomicoId" />
+                <ScalarProperty Name="Trabajador_TrabajadorId" ColumnName="Trabajador_TrabajadorId" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajador">
+            <EntityTypeMapping TypeName="Trabajo_FinalModel.Trabajador">
+              <MappingFragment StoreEntitySet="Trabajador">
+                <ScalarProperty Name="TrabajadorId" ColumnName="TrabajadorId" />
+                <ScalarProperty Name="DniTrabajador" ColumnName="DniTrabajador" />
+                <ScalarProperty Name="NombreTrabajador" ColumnName="NombreTrabajador" />
+                <ScalarProperty Name="ApellidoTrabajador" ColumnName="ApellidoTrabajador" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="Empresa_EmpresaId" ColumnName="Empresa_EmpresaId" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
